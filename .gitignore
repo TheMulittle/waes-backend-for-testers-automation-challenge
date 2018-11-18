@@ -1,0 +1,16 @@
+*.tmp
+
+# Logs
+logs
+*.log
+
+# intellij files
+*.iml
+.idea
+
+#gradle related files
+target
+gradle
+.gradle
+build
+out
