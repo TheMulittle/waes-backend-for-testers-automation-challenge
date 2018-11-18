@@ -6,6 +6,8 @@ import net.serenitybdd.rest.SerenityRest;
 
 public abstract class BaseStep {
 
+    static Response lastReponse;
+
     public Response getRequest(String URI) {
         return SerenityRest.when().get(URI);
     }

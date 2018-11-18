@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.9.20'
+    testCompile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.9.20'
     testCompile group: 'net.serenity-bdd', name: 'serenity-core', version: '2.0.17'
     testCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: '2.0.17'
     testCompile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: '2.0.17'

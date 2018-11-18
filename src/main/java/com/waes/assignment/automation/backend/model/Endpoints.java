@@ -3,7 +3,6 @@ package com.waes.assignment.automation.backend.model;
 import javax.print.DocFlavor;
 
 public enum Endpoints {
-
     USER_INFORMATION("users/details?username={userName}"),
     ALL_USERS("users/all"),
     LOG_IN("users/access"),
