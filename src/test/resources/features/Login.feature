@@ -1,7 +1,7 @@
 Feature: Login
   API should be able to give data to a authenticated user
 
-  Scenario Outline: Successful Login
+  Scenario Outline: An already existing user should be able to login
     Given I have <user> already registered in the system
     When I login with the following credentials: <user> / <password>
     Then I should receive a 200 status code

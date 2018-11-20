@@ -1,7 +1,17 @@
 Feature: Signup
   API should be able to register user
 
-  Scenario Outline: User should not be able to sign-up with missing data
+  Scenario: A new signed up hero should return the hero information
+    Given I do not have brave / world already registered in the system
+    When I sign-up user with following information:
+      |username  |pw   |dateOfBirth|email          |isAdmin|name  |superpower|
+      |brave     |world|1984-07-26 |brave@world.com|false  |A Name|Be a book |
+    Then I should receive a 200 status code
+    Then I should see the new user information in the JSON response
+      |username  |dateOfBirth|email          |isAdmin|name  |superpower|
+      |brave     |1984-07-26 |brave@world.com|false  |A Name|Be a book |
+
+  Scenario Outline: Hero should not be able to sign-up with missing data
     Given I do not have <username> / pass already registered in the system
     When I sign-up user with following information:
       |username  |pw  |dateOfBirth  |email  |isAdmin  |name  |superpower  |
@@ -22,7 +32,7 @@ Feature: Signup
   |aldous6 |pass|1984-07-26  |aldous5@bravenewworld.com|true   |Amazing Admin|                    |
 
 
-  Scenario Outline: User should not be able to sign-up with already registered username, email or name
+  Scenario Outline: Hero should not be able to sign-up with already registered username or email
 
     Given I have <user> already registered in the system
     When I sign-up user with following information:

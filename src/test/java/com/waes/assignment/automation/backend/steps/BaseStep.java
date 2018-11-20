@@ -1,6 +1,7 @@
 package com.waes.assignment.automation.backend.steps;
 
 import com.google.common.net.MediaType;
+import com.waes.assignment.automation.backend.model.SignUpUser;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
