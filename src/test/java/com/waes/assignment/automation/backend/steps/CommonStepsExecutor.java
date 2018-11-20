@@ -1,5 +1,6 @@
 package com.waes.assignment.automation.backend.steps;
 
+import com.waes.assignment.automation.backend.model.SignUpUser;
 import cucumber.api.DataTable;
 import net.thucydides.core.annotations.Step;
 
@@ -22,13 +23,12 @@ public class CommonStepsExecutor extends BaseStep {
         return lastResponse.getStatusCode();
     }
 
-    public void allUserInformationMatchTheJSON(DataTable information) {
-        Map<String,String> informationMap = information.asMaps(String.class, String.class).get(0);
-        lastResponse.then().body("dateOfBirth", containsString(informationMap.get("dateOfBirth")))
-                          .body("email",       containsString(informationMap.get("email")))
-                          .body("isAdmin",     equalTo(Boolean.valueOf(informationMap.get("isAdmin"))))
-                          .body("name",        containsString(informationMap.get("name")))
-                          .body("superpower",  containsString(informationMap.get("superpower")));
+    public void allUserInformationMatchTheJSON(SignUpUser user) {
+        lastResponse.then().body("dateOfBirth", is(user.getDateOfBirth()))
+                .body("email",       is(user.getEmail()))
+                .body("isAdmin",     is(user.isAdmin()))
+                .body("name",        is(user.getName()))
+                .body("superpower",  is(user.getSuperpower()));
     }
 
     public void allErrorInformationMatchTheJSON(DataTable information) {

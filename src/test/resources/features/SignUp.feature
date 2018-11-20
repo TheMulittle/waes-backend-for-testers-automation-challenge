@@ -3,17 +3,17 @@ Feature: Signup
 
   Scenario: A new signed up hero should return the hero information
     Given I do not have brave / world already registered in the system
-    When I sign-up user with following information:
+    When I sign-up hero with following information:
       |username  |pw   |dateOfBirth|email          |isAdmin|name  |superpower|
       |brave     |world|1984-07-26 |brave@world.com|false  |A Name|Be a book |
     Then I should receive a 200 status code
-    Then I should see the new user information in the JSON response
-      |username  |dateOfBirth|email          |isAdmin|name  |superpower|
-      |brave     |1984-07-26 |brave@world.com|false  |A Name|Be a book |
+    Then I should see the user information in the JSON response
+      |dateOfBirth|email          |isAdmin|name  |superpower|
+      |1984-07-26 |brave@world.com|false  |A Name|Be a book |
 
   Scenario Outline: Hero should not be able to sign-up with missing data
     Given I do not have <username> / pass already registered in the system
-    When I sign-up user with following information:
+    When I sign-up hero with following information:
       |username  |pw  |dateOfBirth  |email  |isAdmin  |name  |superpower  |
       |<username>|<pw>|<dateOfBirth>|<email>|<isAdmin>|<name>|<superpower>|
     Then I should receive a 400 status code
@@ -35,7 +35,7 @@ Feature: Signup
   Scenario Outline: Hero should not be able to sign-up with already registered username or email
 
     Given I have <user> already registered in the system
-    When I sign-up user with following information:
+    When I sign-up hero with following information:
       |username|pw      |dateOfBirth  |email  |isAdmin  |name  |superpower  |
       |<user>  |<pw>    |<dateOfBirth>|<email>|<isAdmin>|<name>|<superpower>|
     Then I should receive a 409 status code

@@ -1,5 +1,6 @@
 package com.waes.assignment.automation.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SignUpUser {

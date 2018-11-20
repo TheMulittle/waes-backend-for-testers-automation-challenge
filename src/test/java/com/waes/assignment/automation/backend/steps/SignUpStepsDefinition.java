@@ -4,8 +4,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waes.assignment.automation.backend.model.SignUpUser;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
@@ -14,18 +13,12 @@ public class SignUpStepsDefinition {
     @Steps
     SignUpStepsExecutor signUpSteps;
 
-    @When("^I sign-up user with following information:$")
+    @Given("^I have hero with following information already registered:$")
+    @When("^I sign-up hero with following information:$")
     public void iSignUpUserWithFollowingInformation(DataTable userInformation) throws Throwable {
         SignUpUser user = convertDataTableToSingUpUser(userInformation);
         signUpSteps.signUpUser(user);
     }
-
-    @Then("^I should see the new user information in the JSON response$")
-    public void iShouldSeeTheNewUserInformationInTheJSONResponse(DataTable userInformation) throws Throwable {
-        SignUpUser user = convertDataTableToSingUpUser(userInformation);
-        signUpSteps.matchNewUserInformationMatchesJson(user);
-    }
-
 
     private SignUpUser convertDataTableToSingUpUser(DataTable userInformation) {
         final ObjectMapper mapper = new ObjectMapper().disable(MapperFeature.AUTO_DETECT_IS_GETTERS);

@@ -1,5 +1,8 @@
 package com.waes.assignment.automation.backend.steps;
 
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.waes.assignment.automation.backend.model.SignUpUser;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
@@ -21,7 +24,8 @@ public class CommonStepsDefinition {
 
     @Then("^I should see the user information in the JSON response$")
     public void iShouldSeeTheInformationInTheJSONResponse(DataTable information) throws Throwable {
-        commonSteps.allUserInformationMatchTheJSON(information);
+        SignUpUser user = convertDataTableToSingUpUser(information);
+        commonSteps.allUserInformationMatchTheJSON(user);
     }
 
     @Then("^I should see the error information in the JSON response$")
@@ -33,4 +37,10 @@ public class CommonStepsDefinition {
     public void iHaveUserPasswordAlreadyRegisteredInTheSystem(String dummyParam) {
         //This step is written for clarity, we already have the users in the system =)
     }
+
+    private SignUpUser convertDataTableToSingUpUser(DataTable userInformation) {
+        final ObjectMapper mapper = new ObjectMapper().disable(MapperFeature.AUTO_DETECT_IS_GETTERS);
+        return mapper.convertValue(userInformation.asMaps(String.class,String.class).get(0), SignUpUser.class);
+    }
+
 }
