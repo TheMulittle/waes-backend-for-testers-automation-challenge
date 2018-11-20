@@ -5,11 +5,9 @@ import net.thucydides.core.annotations.Step;
 
 import java.util.Map;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
-public class CommonStepsExecutor extends BaseStep {
+public class DeleteStepsExecutor extends BaseStep {
 
     @Step("Then I should receive the correct information for user {0}")
     public void assertUserInformation(String username, String password) {

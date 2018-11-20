@@ -1,5 +1,5 @@
-Feature: Login
-  API should be able to give data to a authenticated user
+Feature: User Information
+  API should retrieve all users in the system
 
   Scenario Outline: Successful Login
     Given I have <user> already registered in the system
@@ -18,10 +18,9 @@ Feature: Login
     When I login with the following credentials: <user> / <password>
     Then I should receive a 401 status code
     Then I should see the error information in the JSON response
-      |errorCode  |errorMessage                                      |
-      |401        |Invalid credentials: Invalid username or password |
-
+      |errorCode  |errorMessage  |
+      |<errorCode>|<errorMessage>|
   Examples:
-    |user |password|
-    |admin|        |
-    |     |wizard  |
+    |user |password|errorCode|errorMessage                                     |
+    |admin|        |   401  |Invalid credentials: Invalid username or password |
+    |     |wizard  |   401  |Invalid credentials: Invalid username or password |
