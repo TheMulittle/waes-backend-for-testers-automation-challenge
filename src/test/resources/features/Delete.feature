@@ -8,7 +8,7 @@ Feature: User deletion
       |Eddard  |Stark|1984-04-11  |winter@iscoming.com|true   |Eddard Stark |The man who passes the sentence, swings the sword |
     When I try to delete hero Eddard / Stark
     Then I should receive a 200 status code
-    Then I should see the user information in the JSON response
+    Then I should see the hero information in the JSON response
       |dateOfBirth |email              |isAdmin|name         |superpower                                        |
       |1984-04-11  |winter@iscoming.com|true   |Eddard Stark |The man who passes the sentence, swings the sword |
 

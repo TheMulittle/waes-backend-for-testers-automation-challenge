@@ -2,9 +2,8 @@ package com.waes.assignment.automation.backend.steps;
 
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.waes.assignment.automation.backend.model.SignUpUser;
+import com.waes.assignment.automation.backend.model.User;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import net.thucydides.core.annotations.Steps;
@@ -22,9 +21,9 @@ public class CommonStepsDefinition {
         Assert.assertThat(commonSteps.getStatusCode(), is(statusCode));
     }
 
-    @Then("^I should see the user information in the JSON response$")
+    @Then("^I should see the hero information in the JSON response$")
     public void iShouldSeeTheInformationInTheJSONResponse(DataTable information) throws Throwable {
-        SignUpUser user = convertDataTableToSingUpUser(information);
+        User user = convertDataTableToSingUpUser(information);
         commonSteps.allUserInformationMatchTheJSON(user);
     }
 
@@ -38,9 +37,9 @@ public class CommonStepsDefinition {
         //This step is written for clarity, we already have the users in the system =)
     }
 
-    private SignUpUser convertDataTableToSingUpUser(DataTable userInformation) {
+    private User convertDataTableToSingUpUser(DataTable userInformation) {
         final ObjectMapper mapper = new ObjectMapper().disable(MapperFeature.AUTO_DETECT_IS_GETTERS);
-        return mapper.convertValue(userInformation.asMaps(String.class,String.class).get(0), SignUpUser.class);
+        return mapper.convertValue(userInformation.asMaps(String.class,String.class).get(0), User.class);
     }
 
 }

@@ -3,7 +3,7 @@ package com.waes.assignment.automation.backend.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SignUpUser {
+public class User {
     private String dateOfBirth;
     private String email;
     private boolean isAdmin;

@@ -1,13 +1,12 @@
 package com.waes.assignment.automation.backend.steps;
 
-import com.waes.assignment.automation.backend.model.SignUpUser;
+import com.waes.assignment.automation.backend.model.User;
 import cucumber.api.DataTable;
 import net.thucydides.core.annotations.Step;
 
 import java.util.Map;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class CommonStepsExecutor extends BaseStep {
@@ -23,7 +22,7 @@ public class CommonStepsExecutor extends BaseStep {
         return lastResponse.getStatusCode();
     }
 
-    public void allUserInformationMatchTheJSON(SignUpUser user) {
+    public void allUserInformationMatchTheJSON(User user) {
         lastResponse.then().body("dateOfBirth", is(user.getDateOfBirth()))
                 .body("email",       is(user.getEmail()))
                 .body("isAdmin",     is(user.isAdmin()))

@@ -7,7 +7,7 @@ Feature: Signup
       |username  |pw   |dateOfBirth|email          |isAdmin|name  |superpower|
       |brave     |world|1984-07-26 |brave@world.com|false  |A Name|Be a book |
     Then I should receive a 200 status code
-    Then I should see the user information in the JSON response
+    Then I should see the hero information in the JSON response
       |dateOfBirth|email          |isAdmin|name  |superpower|
       |1984-07-26 |brave@world.com|false  |A Name|Be a book |
 

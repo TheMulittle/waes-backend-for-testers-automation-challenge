@@ -5,7 +5,7 @@ Feature: Login
     Given I have <user> already registered in the system
     When I login with the following credentials: <user> / <password>
     Then I should receive a 200 status code
-    Then I should see the user information in the JSON response
+    Then I should see the hero information in the JSON response
       |dateOfBirth  |email  |isAdmin  |name  |superpower  |
       |<dateOfBirth>|<email>|<isAdmin>|<name>|<superpower>|
 
