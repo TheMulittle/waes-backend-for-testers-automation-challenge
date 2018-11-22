@@ -18,19 +18,16 @@ public class DeleteStepsDefinition {
 
     @Given("^I do not have (.*?) / (.*?) already registered in the system$")
     public void iDoNotHaveUserAlreadyRegisteredInTheSystem(String userName, String password) {
-        deleteSteps.withAuth(userName, password)
-                .deleteRequest(DELETE.getURI())
-                .then().statusCode(anyOf(is(HttpStatus.SC_OK),is(HttpStatus.SC_NOT_FOUND), is(HttpStatus.SC_UNAUTHORIZED)));
+        deleteSteps.authenticatedDelete(userName, password);
     }
 
     @When("^I try to delete hero (.*?) / (.*?)$")
     public void iDeleteUser(String userName, String password) {
-        deleteSteps.withAuth(userName, password)
-                .deleteRequest(DELETE.getURI());
+        deleteSteps.authenticatedDelete(userName, password);
     }
 
     @When("^I try to call delete endpoint without authentication$")
     public void iTryToCallDeleteEndpointWithoutAuthentication() throws Throwable {
-        deleteSteps.deleteRequest(DELETE.getURI());
+        deleteSteps.callDelete();
     }
 }

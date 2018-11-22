@@ -6,23 +6,33 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
 
+import java.util.HashSet;
+import java.util.Set;
 
-public abstract class BaseStep {
+public class ApiHandler {
+
+    private static ApiHandler instance = new ApiHandler();
+
+    public static ApiHandler getInstance() {
+        return instance;
+    }
 
     private static final String BASE_URI = "http://localhost:8081/waesheroes/api/v1/";
+
+    static Set<User> registeredUsers = new HashSet<>();
 
     static Response lastResponse;
 
     static RequestSpecification spec = SerenityRest.given().log().all();
 
-    public BaseStep withAuth(String hero, String password) {
+    public ApiHandler withAuth(String hero, String password) {
         spec = spec.auth().preemptive().basic(hero, password);
-        return this;
+        return instance;
     }
 
-    public BaseStep withHeader(String header, String value) {
+    public ApiHandler withHeader(String header, String value) {
         spec = spec.given().header(header, value);
-        return this;
+        return instance;
     }
 
     public Response getRequest(String URI, String... parameters) {
@@ -37,15 +47,26 @@ public abstract class BaseStep {
         return lastResponse;
     }
 
+
+    public Response putRequest(String URI, Object body) {
+        lastResponse = spec.given().body(body).when().log().all().put(BASE_URI+ URI);
+        spec = SerenityRest.given().log().all();
+        return lastResponse;
+    }
+
     public Response deleteRequest(String URI) {
         lastResponse = spec.given().when().log().all().delete(BASE_URI+ URI);
         spec = SerenityRest.given().log().all();
         return lastResponse;
     }
 
-    protected BaseStep withContentType(MediaType contentType) {
+    protected ApiHandler withContentType(MediaType contentType) {
         spec = spec.contentType(contentType.toString());
-        return this;
+        return instance;
+    }
+
+    public Set<User> getRegisteredUsers() {
+        return registeredUsers;
     }
 
 }
