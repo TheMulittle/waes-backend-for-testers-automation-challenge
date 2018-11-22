@@ -10,7 +10,6 @@ logs
 
 #gradle related files
 target
-gradle
 .gradle
 build
 out
