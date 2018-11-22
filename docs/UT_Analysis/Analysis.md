@@ -1,16 +1,17 @@
-<h2> Coverage </h2>
+## Coverage
 
-The project has a good code coverage (65% of line coverage). One point that I'd like to highlight is that, in my opinion, POJO's shouldn't be targeted by Unit Tests. They have only setters and getters and almost all IDE's can generate them. Also, there are other tools such as Lombok that can be used. We should focus on business logic instead. 
+The project has a good code coverage (65% of line coverage). One point that I'd like to highlight is that, in my opinion, POJO's shouldn't be targeted by Unit Tests. 
+They have only setters and getters and almost all IDE's can generate them. Also, there are other tools such as Lombok that can be used. We should focus on business logic instead. 
 
-<h2> Mutation Coverage </h2> 
+## Mutation Coverage
 
 I've added Pitest (http://pitest.org/) in the project to check the mutation coverage. Mutation tests let us know how good 
 our tests are by running our unit tests against modified versions of our code. If nothing fails, the mutation is tagged
  as "SURVIVED" and this means that we do not have good coverage for that specific line. Pitest was run, considering 
  only business logic classes, and the mutation coverage stayed at 63% which is reasonable, but can be improved. 
- The report in this folder ([pit-reports/report.html](pit-reports/report.html) contains the result.
+ The report in this folder ([pit-reports/report.html](docs/UT_analysis/pit-reports/report.html) contains the result.
 
-<h2> Test strategy/efficiency </h2>
+## Test strategy/efficiency
 
 The unit tests names are using a pattern of expectation_condition() which is solid. UserService is being instantiated 
 in every test, perhaps it could be moved to a @BeforeEach section, just to make the other tests shorten.
