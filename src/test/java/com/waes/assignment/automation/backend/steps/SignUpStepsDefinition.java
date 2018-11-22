@@ -15,7 +15,7 @@ public class SignUpStepsDefinition {
 
     @Given("^I have hero with following information already registered:$")
     @When("^I sign-up hero with following information:$")
-    public void iSignUpUserWithFollowingInformation(DataTable userInformation) throws Throwable {
+    public void iSignUpUserWithFollowingInformation(DataTable userInformation) {
         User user = convertDataTableToSingUpUser(userInformation);
         signUpSteps.signUpUser(user);
     }

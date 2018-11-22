@@ -9,7 +9,7 @@ public class AllUsersStepsDefinition {
     AllUsersStepsExecutor  allUsersSteps;
 
     @When("^I retrieve all heroes information with (.*?) / (.*?)$")
-    public void iRetrieveAllHeroesInformation(String userName, String password) throws Throwable {
+    public void iRetrieveAllHeroesInformation(String userName, String password) {
         allUsersSteps.retrieveAllUserInformation(userName, password);
     }
 

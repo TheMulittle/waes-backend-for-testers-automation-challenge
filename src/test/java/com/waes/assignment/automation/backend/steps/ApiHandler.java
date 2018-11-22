@@ -69,4 +69,7 @@ public class ApiHandler {
         return registeredUsers;
     }
 
+    public void addRegisteredUser(User user) {
+        registeredUsers.add(user);
+    }
 }

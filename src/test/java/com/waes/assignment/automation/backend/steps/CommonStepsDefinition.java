@@ -31,19 +31,19 @@ public class CommonStepsDefinition {
     }
 
     @Then("^I should see the hero information in the JSON response$")
-    public void iShouldSeeTheInformationInTheJSONResponse(DataTable information) throws Throwable {
+    public void iShouldSeeTheInformationInTheJSONResponse(DataTable information) {
         User user = convertDataTableToUser(information);
         commonSteps.allUserInformationMatchTheJSON(user);
     }
 
     @Then("^I should see the error information in the JSON response$")
-    public void iShouldSeeTheErrorInformationInTheJSONResponse(DataTable information) throws Throwable {
+    public void iShouldSeeTheErrorInformationInTheJSONResponse(DataTable information) {
         commonSteps.allErrorInformationMatchTheJSON(information);
     }
 
 
     @Then("^I should see that hero (.*?) is in the JSON response$")
-    public void iShouldSeeThatHeroAdminIsInTheJSONResponse(String userName, DataTable information) throws Throwable {
+    public void iShouldSeeThatHeroAdminIsInTheJSONResponse(String userName, DataTable information) {
         User user = convertDataTableToUser(information);
         commonSteps.userInformationShouldBeInJSON(user, userName);
     }

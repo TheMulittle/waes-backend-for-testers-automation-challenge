@@ -9,16 +9,12 @@ import java.util.Map;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 
-public class CommonStepsExecutor {
+public class CommonStepsExecutor extends BaseStepExecutor {
 
-    ApiHandler apiHandler = ApiHandler.getInstance();
-
-    @Step("Then I should receive the correct information for user {0}")
     public void assertUserInformation(String username, String password) {
 
     }
 
-    @Step
     public int getStatusCode() {
         apiHandler.lastResponse.getBody().prettyPrint();
         return apiHandler.lastResponse.getStatusCode();

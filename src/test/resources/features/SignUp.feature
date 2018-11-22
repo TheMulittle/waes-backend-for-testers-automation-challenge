@@ -40,8 +40,8 @@ Feature: Signup
       |<user>  |<pw>    |<dateOfBirth>|<email>|<isAdmin>|<name>|<superpower>|
     Then I should receive a 409 status code
     Then I should see the error information in the JSON response
-      |errorCode  |errorMessage                                      |
-      |409        |                                                  |
+      |errorCode  |errorMessage                                                 |
+      |409        |User registration error:|
 
     Examples:
       |user |pw  |dateOfBirth |email                    |isAdmin|name         |superpower          |

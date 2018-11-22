@@ -6,8 +6,8 @@ Feature: Update
       |username|pw   |dateOfBirth |email       |isAdmin|name    |superpower |
       |Goku    |Son  |1910-01-01  |son@goku.com|true   |Son Goku|Kaioken    |
     When I update hero with credentials Goku / Son to:
-      |pw    |dateOfBirth |email          |isAdmin|name   |superpower |
-      |Gogita|1922-02-02  |goku@vegito.com|false  |Gogeta |Kaioken  x3|
+      |username|pw    |dateOfBirth |email          |isAdmin|name   |superpower |
+      |Goku    |Gogita|1922-02-02  |goku@vegito.com|false  |Gogeta |Kaioken  x3|
     Then I should receive a 200 status code
     Then I should see the hero information in the JSON response
       |dateOfBirth |email          |isAdmin|name   |superpower |
@@ -19,8 +19,8 @@ Feature: Update
       |Trunks  |Future|1910-01-01  |trunks@a.com|true   |Turnks  |Z Sword   |
     And I have admin already registered in the system
     When I update hero with credentials Trunks / Future to:
-      |pw    |dateOfBirth |email                |isAdmin|name   |superpower |
-      |Gogita|1922-02-02  |a.admin@wearewaes.com|false  |Gogeta |Kaioken  x3|
+      |username|pw    |dateOfBirth |email                |isAdmin|name   |superpower |
+      |Trunks  |Gogita|1922-02-02  |a.admin@wearewaes.com|false  |Gogeta |Kaioken  x3|
     Then I should receive a 409 status code
     Then I should see the error information in the JSON response
       |errorCode  |errorMessage                                                |

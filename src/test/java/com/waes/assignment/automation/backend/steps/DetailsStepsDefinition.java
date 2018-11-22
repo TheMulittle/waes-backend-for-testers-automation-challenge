@@ -10,7 +10,7 @@ public class DetailsStepsDefinition {
     DetailsStepsExecutor detailsSteps;
 
     @When("^I retrieve (.*?) hero details$")
-    public void iRetrieveAdminHeroDetails(String userName) throws Throwable {
+    public void iRetrieveAdminHeroDetails(String userName) {
         detailsSteps.retrieveUserDetails(userName);
     }
 }

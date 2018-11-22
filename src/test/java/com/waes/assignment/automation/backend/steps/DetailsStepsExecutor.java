@@ -9,16 +9,8 @@ import java.util.Map;
 import static com.waes.assignment.automation.backend.model.Endpoints.USER_INFORMATION;
 import static org.hamcrest.Matchers.*;
 
-public class DetailsStepsExecutor {
+public class DetailsStepsExecutor extends BaseStepExecutor {
 
-    ApiHandler apiHandler = ApiHandler.getInstance();
-
-    @Step("Then I should receive the correct information for user {0}")
-    public void assertUserInformation(String username, String password) {
-
-    }
-
-    @Step
     public void retrieveUserDetails(String userName) {
         apiHandler.getRequest(USER_INFORMATION.getURI(), userName);
     }
