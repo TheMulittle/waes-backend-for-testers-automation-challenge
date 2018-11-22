@@ -1,6 +1,7 @@
 package com.waes.assignment.automation.backend.steps;
 
 import com.google.common.net.MediaType;
+import com.waes.assignment.automation.backend.model.User;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
@@ -24,12 +25,6 @@ public abstract class BaseStep {
         return this;
     }
 
-    /*public Response getRequest(String URI) {
-        lastResponse = spec.when().log().all().get(BASE_URI+ URI);
-        spec = SerenityRest.given().log().all();
-        return lastResponse;
-    }*/
-
     public Response getRequest(String URI, String... parameters) {
         lastResponse = spec.when().log().all().get(BASE_URI+ URI, parameters);
         spec = SerenityRest.given().log().all();
@@ -52,4 +47,5 @@ public abstract class BaseStep {
         spec = spec.contentType(contentType.toString());
         return this;
     }
+
 }

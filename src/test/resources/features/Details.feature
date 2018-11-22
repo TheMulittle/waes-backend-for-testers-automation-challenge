@@ -6,8 +6,8 @@ Feature: Details
     When I retrieve admin hero details
     Then I should receive a 200 status code
     Then I should see the hero information in the JSON response
-      |dateOfBirth |email                  |isAdmin|name            |superpower                        |
-      |1984-04-16  |a.admin@wearewaes.com  |true   |Amazing Admin   |Change the course of a waterfall. |
+      |dateOfBirth|email                  |isAdmin|name            |superpower                        |
+      |1984-04-16 |a.admin@wearewaes.com  |true   |Amazing Admin   |Change the course of a waterfall. |
 
   Scenario: A non existing hero should return "not found" response
     Given I do not have Douglas / Adams already registered in the system

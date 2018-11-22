@@ -1,5 +1,6 @@
 package com.waes.assignment.automation.backend.steps;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waes.assignment.automation.backend.model.User;
@@ -9,12 +10,20 @@ import cucumber.api.java.en.Then;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.hamcrest.Matchers.is;
 
 public class CommonStepsDefinition {
 
     @Steps
     CommonStepsExecutor commonSteps;
+
+    @Given("^I have (.*?) already registered in the system$")
+    public void iHaveUserPasswordAlreadyRegisteredInTheSystem(String dummyParam) {
+        //This step is written for clarity, we already have the users in the system =)
+    }
 
     @Then("I should receive a (\\d+) status code")
     public void checkStatusCode(int statusCode){
@@ -23,7 +32,7 @@ public class CommonStepsDefinition {
 
     @Then("^I should see the hero information in the JSON response$")
     public void iShouldSeeTheInformationInTheJSONResponse(DataTable information) throws Throwable {
-        User user = convertDataTableToSingUpUser(information);
+        User user = convertDataTableToUser(information);
         commonSteps.allUserInformationMatchTheJSON(user);
     }
 
@@ -32,14 +41,15 @@ public class CommonStepsDefinition {
         commonSteps.allErrorInformationMatchTheJSON(information);
     }
 
-    @Given("^I have (.*?) already registered in the system$")
-    public void iHaveUserPasswordAlreadyRegisteredInTheSystem(String dummyParam) {
-        //This step is written for clarity, we already have the users in the system =)
+
+    @Then("^I should see that hero (.*?) is in the JSON response$")
+    public void iShouldSeeThatHeroAdminIsInTheJSONResponse(String userName, DataTable information) throws Throwable {
+        User user = convertDataTableToUser(information);
+        commonSteps.userInformationShouldBeInJSON(user, userName);
     }
 
-    private User convertDataTableToSingUpUser(DataTable userInformation) {
+    private User convertDataTableToUser(DataTable userInformation) {
         final ObjectMapper mapper = new ObjectMapper().disable(MapperFeature.AUTO_DETECT_IS_GETTERS);
         return mapper.convertValue(userInformation.asMaps(String.class,String.class).get(0), User.class);
     }
-
 }

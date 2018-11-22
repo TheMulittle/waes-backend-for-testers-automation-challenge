@@ -35,4 +35,12 @@ public class CommonStepsExecutor extends BaseStep {
         lastResponse.then().body("errorCode", is(Integer.valueOf(informationMap.get("errorCode"))))
                 .body("errorMessage", containsString(informationMap.get("errorMessage")));
     }
+
+    public void userInformationShouldBeInJSON(User user, String userName) {
+        lastResponse.then().root(userName)
+                .body("email",       is(user.getEmail()))
+                .body("isAdmin",     is(user.isAdmin()))
+                .body("name",        is(user.getName()))
+                .body("superpower",  is(user.getSuperpower()));
+    }
 }
