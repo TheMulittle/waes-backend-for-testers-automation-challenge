@@ -42,7 +42,7 @@ Defects can be found under [docs/Back End Report.pdf](docs/Back End Report.pdf)
 
 * Some parameter validations should performed. Whenever we send an invalid field the status code is 400 but the error
 message is "Data format is not correct: Error deserializing object from entity stream.". This doesn't tell the API user
-what field was wrong when what is wrong with the field. Is it the length? Is a parameter missing? Is it too short? 
+what field was wrong or even what is wrong with the field. Is it the length? Is a parameter missing? Is it too short? Is it too long?
 Which parameter failed?
 
 * Define field maximum and minimum 
