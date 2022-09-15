@@ -2,7 +2,7 @@ package com.waes.assignment.automation.backend;
 
 import com.waes.assignment.automation.backend.model.User;
 import com.waes.assignment.automation.backend.steps.ApiHandler;
-import cucumber.api.CucumberOptions;
+import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;

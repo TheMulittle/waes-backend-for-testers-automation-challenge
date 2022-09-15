@@ -3,9 +3,8 @@ package com.waes.assignment.automation.backend.steps;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waes.assignment.automation.backend.model.User;
-import cucumber.api.DataTable;
-import cucumber.api.PendingException;
-import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
 public class UpdateStepsDefinition {

@@ -1,7 +1,7 @@
 package com.waes.assignment.automation.backend.steps;
 
 import com.waes.assignment.automation.backend.model.User;
-import cucumber.api.DataTable;
+import io.cucumber.datatable.DataTable;
 import net.thucydides.core.annotations.Step;
 
 import java.util.Map;

@@ -1,8 +1,7 @@
 package com.waes.assignment.automation.backend.steps;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import org.apache.http.HttpStatus;
 

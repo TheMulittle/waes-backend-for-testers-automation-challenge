@@ -1,6 +1,6 @@
 package com.waes.assignment.automation.backend.steps;
 
-import cucumber.api.DataTable;
+import io.cucumber.datatable.DataTable;
 import net.thucydides.core.annotations.Step;
 import org.apache.http.HttpStatus;
 

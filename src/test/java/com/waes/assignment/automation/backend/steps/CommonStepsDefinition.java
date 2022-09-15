@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waes.assignment.automation.backend.model.User;
-import cucumber.api.DataTable;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
 
@@ -25,7 +25,7 @@ public class CommonStepsDefinition {
         //This step is written for clarity, we already have the users in the system =)
     }
 
-    @Then("I should receive a (\\d+) status code")
+    @Then("I should receive a {int} status code")
     public void checkStatusCode(int statusCode){
         Assert.assertThat(commonSteps.getStatusCode(), is(statusCode));
     }
